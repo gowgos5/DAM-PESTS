@@ -1,3 +1,4 @@
-backend/yolo-tiny.h5
-backend/yolo.h5
-backend/resnet50_coco_best_v2.0.1.h5
+backend/*.h5
+backend/training/*
+*/.jpg
+*/.png

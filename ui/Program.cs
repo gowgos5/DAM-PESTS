@@ -36,6 +36,7 @@ namespace BitsBolts
             client.Connect(clientId);
             // Listen to backend server for processed images.
             client.Subscribe(new string[] { "dam-pests/ui" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            // Listen to IoT for rodent activity.
             client.Subscribe(new string[] { "dam-pests/heat" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
             Application.Run(form);
@@ -48,7 +49,7 @@ namespace BitsBolts
             if (e.Topic == "dam-pests/ui")
             {
                 // camera number
-                var cam = System.Text.Encoding.Default.GetString(e.Message);
+                string cam = System.Text.Encoding.Default.GetString(e.Message);
                 form.CameraUpdate(cam);
             }
             else

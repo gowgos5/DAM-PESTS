@@ -15,7 +15,7 @@ def on_message(client, userdata, message):
     date_time = datetime.now().strftime("%d%m%Y_%H%M%S")
     base64_decode(message.payload, date_time)
     print("Processing image "+date_time+".png...")
-    os.system("python object.py "+date_time)
+    os.system("python custom_object.py "+date_time)
 
 client = mqtt.Client("backend")
 client.connect(broker,port)

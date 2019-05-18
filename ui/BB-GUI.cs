@@ -22,14 +22,13 @@ namespace BitsBolts
             InitializeComponent();
 
             cb_cameralist.SelectedItem = null;
+            cb_cameralist.Text = "---Select---";
 
             // Find latest picture for camera 16
-            var directory = new DirectoryInfo("C:/Users/Vernon/Desktop/DAM-PESTS/backend/images");
-            image_path = "C:/Users/Vernon/Desktop/DAM-PESTS/backend/images/"+
-                (from f in directory.GetFiles()
-                 orderby f.LastWriteTime descending
-                 select f).First().Name;
-            cb_cameralist.Text = "---Select---";
+            var directory = new DirectoryInfo("C:/Users/Vernon/Desktop/DAM-PESTS/backend");
+            image_path = (from f in directory.GetFiles("*.png*")
+                          orderby f.LastWriteTime descending
+                          select f).First().Name;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -78,8 +77,7 @@ namespace BitsBolts
         // Images Database button
         private void IMD_Click(object sender, EventArgs e)
         {
-            // DUMMY FOLDER LOCATION
-            System.Diagnostics.Process.Start("C:/Users/Vernon/Desktop/DAM-PESTS/backend/images");
+            System.Diagnostics.Process.Start("C:/Users/Vernon/Desktop/DAM-PESTS/backend");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,7 +96,7 @@ namespace BitsBolts
         {
             if (selectedCamera == 16)
             {
-                this.pb_camera.Image = new Bitmap(image_path);
+                this.pb_camera.Image = new Bitmap("C:/Users/Vernon/Desktop/DAM-PESTS/backend/" + image_path);
             }
             else
             {

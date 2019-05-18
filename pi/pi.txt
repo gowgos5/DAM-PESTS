@@ -1,0 +1,9 @@
+1) Install raspbian (https://desertbot.io/blog/headless-pi-zero-w-wifi-setup-windows)
+2) Reduce power consumption (https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-conserve-energy)
+3) Transfer files to Pi via SSH
+4) Set up Pi camera remote live stream
+(https://www.hackster.io/maciek85/raspberry-pi-video-preview-in-the-browser-ebe576)
+(https://remoteme.org/raspberry-pi/)
+5) Install MQTT (https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/)
+6) Set up local web server for images
+

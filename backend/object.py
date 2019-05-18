@@ -18,11 +18,11 @@ def obj_recognition(img):
 
     detector = ObjectDetection()
     detector.setModelTypeAsRetinaNet()
-    detector.setModelPath(os.path.join(execution_path , "resnet50_coco_best_v2.0.1.h5"))
+    detector.setModelPath(os.path.join(execution_path , "yresnet50_coco_best_v2.0.1.h5"))
     detector.loadModel()
     detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path,
     img+".png") , output_image_path=os.path.join(execution_path , img+"_pro.png") ,
-    minimum_percentage_probability=50 , display_percentage_probability=False ,
+    minimum_percentage_probability=35 , display_percentage_probability=True ,
     display_object_name=True)
 
     for eachObject in detections:
@@ -48,6 +48,7 @@ client = paho.Client("object")
 client.on_publish = on_publish
 client.connect(broker , port)
 client.publish("dam-pests/ui", img_name+"_pro.png" , 1, False)
+print(img_name+"_pro.png")
 #client.publish("dam-pests/ui", image_encoded , 1, False)
 client.loop(1)
 client.disconnect()
